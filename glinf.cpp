@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017, 2018, 2019, 2020, 2021
+ * Copyright (C) 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025
  * Martin Lambers <marlam@marlam.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
