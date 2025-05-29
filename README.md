@@ -9,6 +9,4 @@ It is roughly comparable to `glewinfo` or `glxinfo`, with the following differen
 - it focusses on modern OpenGL
 - it prints implementation limits such as `GL_MAX_DRAW_BUFFERS`
 - it omits information about GLX and visuals
-
-Currently only the implementation limits that I am interested in are printed,
-but more can be added easily.
+- it prints information about available GPU memory
