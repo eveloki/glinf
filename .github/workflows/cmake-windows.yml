@@ -44,10 +44,10 @@ jobs:
         $qtPrefix = "${{ github.workspace }}\Qt\${{ env.QT_VERSION }}\msvc2019_64"
         mkdir release-bin
         copy build\Release\glinf.exe release-bin\
-        copy "$qtPrefix\bin\Qt6Core.dll" release-bin\
-        copy "$qtPrefix\bin\Qt6Gui.dll" release-bin\
-        copy "$qtPrefix\bin\Qt6OpenGL.dll" release-bin\
-        copy "$qtPrefix\bin\opengl32sw.dll" release-bin\
+        copy "${{QT_ROOT_DIR}}\bin\Qt6Core.dll" release-bin\
+        copy "${{QT_ROOT_DIR}}\bin\Qt6Gui.dll" release-bin\
+        copy "${{QT_ROOT_DIR}}\bin\Qt6OpenGL.dll" release-bin\
+        copy "${{QT_ROOT_DIR}}\bin\opengl32sw.dll" release-bin\
         7z a release-bin.zip release-bin\
 
     - name: Upload artifacts
