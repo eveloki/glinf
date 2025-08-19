@@ -39,12 +39,25 @@ jobs:
     - name: Build project
       run: cmake --build build --config Release --parallel 2
 
-    - name: Collect binaries
+    - name: Prepare deployment directory
       run: |
-        $qtPrefix = "${{ github.workspace }}\Qt\${{ env.QT_VERSION }}\msvc2019_64"
         mkdir release-bin
         copy build\Release\glinf.exe release-bin\
-        7z a release-bin.zip build\Release\
+        
+    - name: Run windeployqt
+      run: |
+        $env:PATH = "${{ env.QT_PREFIX }}\bin;$env:PATH"
+        windeployqt `
+          --qmldir . `
+          --plugindir release-bin\plugins `
+          --no-translations `
+          --compiler-runtime `
+          release-bin\glinf.exe
+        copy build\Release\glinf.exe release-bin\
+        
+    - name: Package artifacts
+      run: |
+        7z a release-bin.zip release-bin
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
