@@ -22,7 +22,7 @@ jobs:
         version: ${{ env.QT_VERSION }}
         arch: win64_msvc2019_64
         cache: true
-
+        
     - name: Setup MSVC environment
       uses: ilammy/msvc-dev-cmd@v1
       with:
@@ -44,11 +44,7 @@ jobs:
         $qtPrefix = "${{ github.workspace }}\Qt\${{ env.QT_VERSION }}\msvc2019_64"
         mkdir release-bin
         copy build\Release\glinf.exe release-bin\
-        copy "${QT_ROOT_DIR}\bin\Qt6Core.dll" release-bin\
-        copy "${QT_ROOT_DIR}\bin\Qt6Gui.dll" release-bin\
-        copy "${QT_ROOT_DIR}\bin\Qt6OpenGL.dll" release-bin\
-        copy "${QT_ROOT_DIR}\bin\opengl32sw.dll" release-bin\
-        7z a release-bin.zip release-bin\
+        7z a release-bin.zip build\Release\
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
